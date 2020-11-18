@@ -22,6 +22,9 @@ const styles = makeStyles({
     },
     iconButton: {
         padding: 0
+    },
+    scaleText: {
+        color: "white"
     }
 })
 
@@ -29,6 +32,7 @@ interface IProps {
     addInput: () => void;
     increaseScale: () => Promise<void>;
     decreaseScale: () => Promise<void>;
+    scale: number;
 }
 
 export default function SignatureToolbar(props: IProps) {
@@ -43,6 +47,7 @@ export default function SignatureToolbar(props: IProps) {
             <IconButton onClick={props.decreaseScale} className={classes.iconButton}>
                 <RemoveCircleTwoToneIcon fontSize="large" style={{ color: "red" }} />
             </IconButton>
+            <p className={classes.scaleText}>{`${(props.scale * 100).toFixed(0)}%`}</p>
             <IconButton onClick={props.increaseScale} className={classes.iconButton}>
                 <AddCircleTwoToneIcon fontSize="large" style={{ color: "green" }} />
             </IconButton>

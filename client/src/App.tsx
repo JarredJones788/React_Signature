@@ -27,7 +27,7 @@ export default function App() {
 
 
   return (
-    <div style={{ padding: "20px", height: "calc(100vh - 40px)" }}>
+    <div>
       {!loaded ?
         null
         :
