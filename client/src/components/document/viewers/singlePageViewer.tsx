@@ -4,7 +4,6 @@ import { PDFRenderParams } from 'pdfjs-dist';
 import { PDFDocument } from 'pdf-lib'
 import { Rnd } from 'react-rnd';
 import { makeStyles } from '@material-ui/core';
-import { debounce } from 'throttle-debounce';
 import SignatureToolbar from '../toolbar/toolbar';
 
 interface InputLocation {
@@ -160,8 +159,6 @@ export default function SinglePageViewer(props: IProps) {
 
             //Get the bottom left corner of the input box.
             const finalY = (input.location.y / documentScale) + (input.size.height / documentScale);
-
-            console.log(finalY)
 
             //Flip the Y cordinate to the opposite. Since PDF-lib Y cordinate starts at the bottom left of the page.
             const oppositeY = Math.abs((documentState.pageHeight / documentScale) - finalY);

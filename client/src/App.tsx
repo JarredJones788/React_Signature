@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import './App.css';
 import Document from './components/document/document';
+
+import './App.css';
 
 export default function App() {
 
@@ -31,11 +31,15 @@ export default function App() {
       {!loaded ?
         null
         :
-        <BrowserRouter>
-          <Switch>
-            <Route path="/" render={(p: any) => <Document file={pdfFile} />} exact />
-          </Switch>
-        </BrowserRouter>
+        <Document
+          style={{ padding: "20px", height: "calc(100vh - 40px)" }}
+          file={pdfFile}
+          multiPageSizeLimitKB={200}
+          options={{
+            scale: 1.2,
+            pageGap: 15
+          }}
+        />
       }
     </div >
   );
