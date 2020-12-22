@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import Document from './components/document/document';
 
 import './App.css';
+import PDFViewer, { InputLocation } from './document/document';
 
 export default function App() {
 
   const [pdfFile, setPDFFile] = useState(new ArrayBuffer(0))
   const [loaded, setLoaded] = useState(false)
-
+  
   useEffect(() => {
     fetchPDFDocument().then((data) => {
       setPDFFile(data)
@@ -18,26 +18,36 @@ export default function App() {
   async function fetchPDFDocument() {
     const pdfFetch = await fetch(`http://localhost:3000/pdf/test.pdf`, {
       method: 'GET',
-      headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
-      credentials: 'include',
+      headers: { 'Accept': 'application/pdf', 'Content-Type': 'application/pdf' }
     })
 
     return await pdfFetch.arrayBuffer();
   }
 
 
+  const inputLocations: InputLocation[] = [];
+
   return (
     <div>
       {!loaded ?
         null
         :
-        <Document
-          style={{ padding: "20px", height: "calc(100vh - 40px)" }}
+        <PDFViewer
+          style={{ height: "100vh" }}
           file={pdfFile}
-          multiPageSizeLimitKB={200}
           options={{
             scale: 1.2,
-            pageGap: 15
+            pageGap: 15,
+            multiPageSizeLimitKB: 200,
+            startPage: 1,
+            inputLocations: inputLocations,
+            onDocumentSaved: (file: Uint8Array, inputs: InputLocation[]) => {
+              console.log({
+                file,
+                inputs
+              })
+            },
+            onDocumentLoaded: () => { console.log("Loaded") }
           }}
         />
       }

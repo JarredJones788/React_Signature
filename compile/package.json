@@ -1,0 +1,36 @@
+{
+  "name": "react-pdfviewer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./dist/document.js",
+  "dependencies": {
+    "@material-ui/core": "^4.11.0",
+    "@material-ui/icons": "^4.9.1",
+    "@types/pdfjs-dist": "^2.1.7",
+    "@types/react-signature-canvas": "^1.0.1",
+    "@types/react-tooltip": "^4.2.4",
+    "@types/throttle-debounce": "^2.1.0",
+    "pdf-lib": "^1.12.0",
+    "pdfjs-dist": "2.5.207",
+    "react-rnd": "^10.2.3",
+    "react-signature-canvas": "^1.0.3",
+    "react-tooltip": "^4.2.10",
+    "throttle-debounce": "^3.0.1"
+  },
+  "scripts": {
+    "compile": "@powershell Copy-item -Force -Recurse -Path './../test/src/document/*' -Destination './src/' && tsc && npm link"
+  },
+  "keywords": [
+    "react-pdfviewer",
+    "react",
+    "pdf",
+    "document",
+    "modify",
+    "modification",
+    "edit",
+    "editing",
+    "typescript",
+    "javascript",
+    "library"
+  ]
+}
