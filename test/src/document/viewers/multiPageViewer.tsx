@@ -48,7 +48,7 @@ export default function MultiPageViewer(props: IProps) {
         pageGap: typeof props.options?.pageGap === 'undefined' ? 15 : props.options.pageGap
     })
 
-    const [inputLocations, setInputLocations] = useState<InputLocation[]>(typeof props.options?.inputLocations === 'undefined' ? [] : props.options.inputLocations)
+    const [inputLocations, setInputLocations] = useState<InputLocation[]>([])
 
     useEffect(() => {
 

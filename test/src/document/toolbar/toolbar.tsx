@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import ReactTooltip from 'react-tooltip';
 import { IconButton, makeStyles } from '@material-ui/core';
 import AddCircleTwoToneIcon from '@material-ui/icons/AddCircleTwoTone';
 import RemoveCircleTwoToneIcon from '@material-ui/icons/RemoveCircleTwoTone';
@@ -59,14 +60,15 @@ export default function SignatureToolbar(props: IProps) {
     return (
         <div className={`${classes.toolbar}`}>
             <DrawModal toggle={toggleSignature} show={signatureOpen} save={props.addInput} />
-            <IconButton className={classes.iconButton} onClick={props.saveDocument}>
-                <SaveTwoToneIcon fontSize="large" style={{ color: "green" }} />
-            </IconButton>
-            <IconButton className={classes.iconButton} onClick={toggleSignature}>
+            <ReactTooltip place="bottom" effect="solid" />
+            <IconButton data-tip="Draw" className={classes.iconButton} onClick={toggleSignature}>
                 <GestureTwoToneIcon fontSize="large" style={{ color: "orange" }} />
             </IconButton>
-            <IconButton className={classes.iconButton}>
+            <IconButton data-tip="Text" className={classes.iconButton}>
                 <TextFieldsTwoToneIcon fontSize="large" style={{ color: "orange" }} />
+            </IconButton>
+            <IconButton data-tip="Save" className={classes.iconButton} onClick={props.saveDocument}>
+                <SaveTwoToneIcon fontSize="large" style={{ color: "green" }} />
             </IconButton>
             <div className={classes.flexGrow}></div>
             <IconButton className={classes.iconButton} onClick={props.prevPage}>

@@ -5,6 +5,7 @@ import SignatureCanvas from 'react-signature-canvas'
 import Fab from '@material-ui/core/Fab';
 import ClearIcon from '@material-ui/icons/Clear';
 import CheckIcon from '@material-ui/icons/Check';
+import ReactTooltip from 'react-tooltip';
 
 function getModalStyle() {
 
@@ -107,10 +108,11 @@ export default function DrawModal(props: IProps) {
         <div>
             <Modal className={classes.modal} open={props.show} onClose={props.toggle} >
                 <div style={modalStyle} className={classes.paper + " mobile-draw-width"}>
-                    <Fab onClick={clear} className={classes.drawBtnClear} size="small" >
+                    <ReactTooltip place="left" effect="solid" />
+                    <Fab data-tip="Clear" onClick={clear} className={classes.drawBtnClear} size="small" >
                         <ClearIcon />
                     </Fab>
-                    <Fab onClick={save} className={classes.drawBtnSave} size="small" >
+                    <Fab data-tip="Save" onClick={save} className={classes.drawBtnSave} size="small" >
                         <CheckIcon />
                     </Fab>
                     <SignatureCanvas maxWidth={6} ref={(ref) => { drawRef = ref; ref?.fromDataURL(lastDrawn) }} clearOnResize={false} canvasProps={{ id: "drawCanvas", className: classes.drawCanvas }} />

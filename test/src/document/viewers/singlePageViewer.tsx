@@ -46,7 +46,7 @@ export default function SinglePageViewer(props: IProps) {
         pageHeight: 0,
     })
 
-    const [inputLocations, setInputLocations] = useState<InputLocation[]>(typeof props.options?.inputLocations === 'undefined' ? [] : props.options.inputLocations)
+    const [inputLocations, setInputLocations] = useState<InputLocation[]>([])
 
     useEffect(() => {
 

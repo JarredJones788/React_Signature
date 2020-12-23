@@ -7,7 +7,6 @@ export interface DocumentOptions {
     scale?: number;
     startPage?: number;
     multiPageSizeLimitKB?: number;
-    inputLocations?: InputLocation[];
     onDocumentSaved?: (file: Uint8Array, inputLocations: InputLocation[]) => void;
     onDocumentLoaded?: () => void;
 }

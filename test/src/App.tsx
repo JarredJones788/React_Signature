@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import PDFViewer, { InputLocation } from './document/document';
 
 import './App.css';
-import PDFViewer, { InputLocation } from './document/document';
 
 export default function App() {
 
@@ -24,9 +24,6 @@ export default function App() {
     return await pdfFetch.arrayBuffer();
   }
 
-
-  const inputLocations: InputLocation[] = [];
-
   return (
     <div>
       {!loaded ?
@@ -40,7 +37,6 @@ export default function App() {
             pageGap: 15,
             multiPageSizeLimitKB: 200,
             startPage: 1,
-            inputLocations: inputLocations,
             onDocumentSaved: (file: Uint8Array, inputs: InputLocation[]) => {
               console.log({
                 file,
